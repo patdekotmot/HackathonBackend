@@ -17,6 +17,7 @@ const outSchema = new mongoose.Schema({
         type: String,
         default: Date.now()
     }
+    
 })
 
 const OutModel = new mongoose.model("OutModel", outSchema)
