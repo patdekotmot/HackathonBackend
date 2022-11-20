@@ -109,12 +109,13 @@ const registerStaff = async (req, res) => {
         )
     }
 
-    return (
-        res.status(200).json({
-            message: "Staff Registered Successfully",
-            success: true
-        })
-    )
+    const token = jwt.sign( {staff}, process.env.TOKEN_SECRET)
+
+    res.header("auth-token", token).json({
+        token: token,
+        success: true,
+        status: 200
+    })
 }
 
 const loginStaff = async (req, res) => {
@@ -286,7 +287,7 @@ const getIn = async (req, res) => {
     return (
         res.status(200).json({
             message: "In Successfully",
-            success: false
+            success: true
         })
     )
 }
